@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>For My Annaya &amp; Vadina — A Rakhi Gift ❤️</title>
+  <meta name="description" content="A personal memory film and Rakhi gift for Anudeep Annaya and Vadina — from Shrestha, with forever gratitude." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Crimson+Pro:ital,wght@0,200;0,300;1,200;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===== CURSOR GLOW (desktop only) ===== -->
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<!-- ===== MUSIC CONTROLS ===== -->
+<div id="music-controls" class="hidden" role="toolbar" aria-label="Music controls">
+  <button id="music-toggle" aria-label="Play or pause music">
+    <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" class="hidden"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" aria-label="Volume" />
+</div>
+
+<!-- ===== SCREEN 1: MYSTERY OPENING ===== -->
+<section id="screen-1" class="screen fullscreen dark-screen opening-screen" aria-label="Opening">
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
+  <div class="particles-container" id="opening-particles" aria-hidden="true"></div>
+
+  <div class="opening-content">
+    <div class="opening-lines">
+      <p class="opening-line" id="line1">Some relationships don't begin with a conversation...</p>
+      <p class="opening-line" id="line2">Sometimes... they begin with someone you already know.</p>
+      <p class="opening-line" id="line3">But never really knew.</p>
+    </div>
+    <button id="begin-btn" class="glow-btn hidden" onclick="beginStory()">
+      <span>Begin Our Story</span>
+      <span class="btn-glow" aria-hidden="true">✨</span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== STORY CONTAINER ===== -->
+<div id="story-container" class="hidden">
+
+  <!-- ===== SCREEN 2: BEFORE EVERYTHING CHANGED ===== -->
+  <section id="screen-2" class="screen dark-screen">
+    <div class="screen-inner">
+      <div class="chapter-label reveal-text">Before Everything Changed</div>
+      <h2 class="section-title reveal-text">Before July 11...</h2>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text">I knew him.</p>
+        <p class="narrative reveal-text">I knew he was Kinnu's best friend.</p>
+        <p class="narrative reveal-text italic">But somehow... we never really talked.</p>
+      </div>
+
+      <div class="person-intro reveal-text">
+        <div class="name-badge anudeep-badge">ANNAYA</div>
+      </div>
+
+      <!-- Kinnu + Annaya swiper (3 photos from kinnu-annaya/) -->
+      <div id="swiper-kinnu-annaya" class="reveal-text" role="region" aria-label="Photos of Kinnu and Annaya together"></div>
+
+      <p class="narrative closing-narrative reveal-text italic">
+        "I never knew that one day, this person would become so important in my life."
+      </p>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 3: JULY 11 ===== -->
+  <section id="screen-3" class="screen dark-screen july-screen">
+    <div class="screen-inner">
+      <div class="date-reveal">
+        <div class="date-line"></div>
+        <span class="date-text reveal-text">July 11, 2026</span>
+        <div class="date-line"></div>
+      </div>
+
+      <!-- Animated phone call -->
+      <div class="phone-call-container reveal-text" id="phone-call" aria-label="Incoming phone call animation">
+        <div class="phone-screen">
+          <div class="phone-status-bar">
+            <span>12:47</span>
+            <span>📶 📶</span>
+          </div>
+          <div class="incoming-call-area">
+            <div class="caller-avatar pulse-ring">
+              <span class="caller-icon">📞</span>
+            </div>
+            <div class="incoming-label">Incoming Call</div>
+            <div class="caller-name">Unknown Number</div>
+            <div class="caller-subtitle">+91 xxxxxxxxxx</div>
+          </div>
+          <div class="call-actions" aria-hidden="true">
+            <div class="call-btn decline">✕</div>
+            <div class="call-btn accept">📞</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="narrative-block call-narrative">
+        <p class="narrative reveal-text">I got a call from a number I didn't know.</p>
+        <p class="narrative reveal-text">"Kinnu had met with an accident."</p>
+        <p class="narrative reveal-text">"He was in the hospital."</p>
+        <p class="narrative reveal-text pause-text italic">A pause.</p>
+        <p class="narrative reveal-text">That was the first time I truly spoke to Anudeep.</p>
+      </div>
+
+      <div class="date-reveal secondary-date">
+        <div class="date-line"></div>
+        <span class="date-text reveal-text">July 12, 2026</span>
+        <div class="date-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 4: I'M HERE (ANNAYA) ===== -->
+  <section id="screen-4" class="screen dark-screen im-here-screen">
+    <div class="screen-inner">
+      <div class="narrative-block">
+        <p class="narrative reveal-text">From that day...</p>
+        <p class="narrative reveal-text">You kept calling.</p>
+        <p class="narrative reveal-text">You kept checking on me.</p>
+        <p class="narrative reveal-text">You kept giving me courage.</p>
+        <p class="narrative reveal-text">You kept reminding me that I wasn't alone.</p>
+      </div>
+
+      <!-- Annaya photos swiper (9 photos from annaya/) -->
+      <div id="swiper-annaya" class="reveal-text" role="region" aria-label="Photos of Annaya"></div>
+
+      <div class="telugu-quote-block">
+        <p class="telugu-quote reveal-text" id="telugu-line">
+          "Naku dariyam cheppu... nenu unna ra."
+        </p>
+      </div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text soft-italic">I don't think you know how much those words meant to me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 5: VADINA ===== -->
+  <section id="screen-5" class="screen dark-to-warm-screen vadina-screen">
+    <div class="screen-inner">
+      <div class="narrative-block">
+        <p class="narrative reveal-text">And then there was someone else...</p>
+        <p class="narrative reveal-text italic">Someone who understood.</p>
+      </div>
+
+      <div class="person-intro reveal-text">
+        <div class="name-badge vadina-badge">VADINA ❤️</div>
+      </div>
+
+      <!-- Vadina photos swiper (9 photos from vadina/) -->
+      <div id="swiper-vadina" class="reveal-text" role="region" aria-label="Photos of Vadina"></div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text">You stood beside him.</p>
+        <p class="narrative reveal-text italic">And you stood beside me too.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 6: JULY 25 ===== -->
+  <section id="screen-6" class="screen darkest-screen july25-screen">
+    <div class="screen-inner">
+      <div class="date-reveal">
+        <div class="date-line"></div>
+        <span class="date-text reveal-text">July 25, 2026</span>
+        <div class="date-line"></div>
+      </div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text">The day everything changed.</p>
+      </div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text soft-italic">The person who was my world...</p>
+        <p class="narrative reveal-text soft-italic">was gone.</p>
+      </div>
+
+      <!-- Me + Kinnu swiper (6 photos from kinnu-me/) — subtle grayscale -->
+      <div id="swiper-kinnu-me" class="reveal-text" role="region" aria-label="Photos of Shrestha and Kinnu"></div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text">I didn't know how I was supposed to continue.</p>
+      </div>
+
+      <div class="long-pause-block"></div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text but-text">But I wasn't alone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 7: YOU STAYED ===== -->
+  <section id="screen-7" class="screen warming-screen you-stayed-screen">
+    <div class="screen-inner">
+      <div class="warming-particles" id="warming-particles" aria-hidden="true"></div>
+
+      <!-- Annaya + Vadina together swiper -->
+      <div id="swiper-annaya-vadina" class="reveal-text" role="region" aria-label="Photos of Annaya and Vadina together"></div>
+
+      <div class="stayed-lines">
+        <p class="stayed-line reveal-text" data-word="called">You called.</p>
+        <p class="stayed-line reveal-text" data-word="checked">You checked on me.</p>
+        <p class="stayed-line reveal-text" data-word="listened">You listened.</p>
+        <p class="stayed-line reveal-text" data-word="courage">You gave me courage.</p>
+        <p class="stayed-line reveal-text highlight-stay" data-word="stayed">You stayed.</p>
+      </div>
+
+      <div class="narrative-block">
+        <p class="narrative reveal-text italic">During the days when I didn't know how to keep going...</p>
+        <p class="narrative reveal-text">You were there.</p>
+      </div>
+
+      <div class="narrative-block closing-thought">
+        <p class="narrative reveal-text soft-italic">I may never be able to explain how much that means to me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 8: THE CONNECTION ===== -->
+  <section id="screen-8" class="screen warm-screen connection-screen">
+    <div class="screen-inner">
+
+      <!-- Kinnu + Annaya swiper (reused, 3 photos from kinnu-annaya/) -->
+      <div id="swiper-kinnu-annaya-2" class="reveal-text" role="region" aria-label="Kinnu and Annaya together"></div>
+
+      <div class="narrative-block connection-text">
+        <p class="narrative reveal-text">He was the reason our paths crossed.</p>
+        <p class="narrative reveal-text">Kinnu was my love.</p>
+        <p class="narrative reveal-text">Anudeep was his best friend.</p>
+        <p class="narrative reveal-text italic">But somewhere along the way...</p>
+      </div>
+
+      <div class="connection-reveal">
+        <p class="big-reveal reveal-text" id="annaya-reveal">...you became my <span class="golden">Annaya.</span></p>
+      </div>
+
+      <div class="connection-reveal vadina-reveal-block">
+        <p class="big-reveal reveal-text" id="vadina-reveal">And you became my <span class="rose">Vadina.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 9: FAMILY REVEAL (CINEMATIC 4-STEP) ===== -->
+  <section id="screen-9" class="screen warm-screen family-reveal-screen">
+    <div class="screen-inner">
+
+      <div class="chapter-label reveal-text">The Moment Everything Came Together</div>
+
+      <!-- Step-based family reveal sequence -->
+      <div id="family-reveal-sequence" class="reveal-text">
+
+        <!-- Step 0: Me + Kinnu -->
+        <div class="family-step fs-active" data-step="0">
+          <div class="family-step-inner">
+            <div class="family-step-photo">
+              <img src="" alt="Shrestha and Kinnu" loading="lazy" onclick="openLightbox(this)" />
+              <div class="photo-shimmer"></div>
+            </div>
+            <p class="family-step-label">Shrestha &amp; Kinnu</p>
+          </div>
+        </div>
+
+        <!-- Step 1: Kinnu + Annaya -->
+        <div class="family-step" data-step="1">
+          <div class="family-step-inner">
+            <div class="family-step-photo">
+              <img src="" alt="Kinnu and Annaya" loading="lazy" onclick="openLightbox(this)" />
+              <div class="photo-shimmer"></div>
+            </div>
+            <p class="family-step-label">Kinnu &amp; Annaya</p>
+          </div>
+        </div>
+
+        <!-- Step 2: Annaya + Vadina -->
+        <div class="family-step" data-step="2">
+          <div class="family-step-inner">
+            <div class="family-step-photo">
+              <img src="" alt="Annaya and Vadina" loading="lazy" onclick="openLightbox(this)" />
+              <div class="photo-shimmer"></div>
+            </div>
+            <p class="family-step-label">Annaya &amp; Vadina</p>
+          </div>
+        </div>
+
+        <!-- Step 3: The Family Photo — THE REVEAL -->
+        <div class="family-step family-step-final" data-step="3">
+          <div class="family-glow-ring" aria-hidden="true"></div>
+          <div class="family-step-inner family-final-inner">
+            <div class="family-final-photo-wrap">
+              <img src="" alt="Shrestha, Kinnu, Annaya and Vadina — our family" loading="lazy" onclick="openLightbox(this)" class="family-main-photo" />
+              <div class="photo-shimmer"></div>
+            </div>
+          </div>
+          <div class="golden-particles-container" id="golden-particles" aria-hidden="true"></div>
+        </div>
+
+      </div><!-- end family-reveal-sequence -->
+
+      <!-- Next button to advance steps -->
+      <button class="family-next-btn reveal-text" id="family-next-btn" onclick="advanceFamilyStep()">
+        Then Kinnu &amp; Annaya... ›
+      </button>
+
+      <!-- Family text (revealed on final step) -->
+      <div class="family-text hidden" id="family-text">
+        <p class="narrative">"Maybe family isn't always about blood."</p>
+        <p class="narrative italic">Sometimes...</p>
+        <p class="narrative">"Family is the people who stay."</p>
+        <p class="narrative">And somehow...</p>
+        <p class="narrative italic">Kinnu gave me more than a love story.</p>
+        <p class="narrative golden-text">He gave me people I could call family.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 10: RAKHI ===== -->
+  <section id="screen-10" class="screen rakhi-screen">
+    <div class="rakhi-bg-elements" aria-hidden="true">
+      <div class="rakhi-petal" style="--i:1"></div>
+      <div class="rakhi-petal" style="--i:2"></div>
+      <div class="rakhi-petal" style="--i:3"></div>
+      <div class="rakhi-petal" style="--i:4"></div>
+      <div class="rakhi-petal" style="--i:5"></div>
+      <div class="rakhi-petal" style="--i:6"></div>
+      <div class="rakhi-petal" style="--i:7"></div>
+      <div class="rakhi-petal" style="--i:8"></div>
+      <div class="diya-left" id="diya-1" aria-hidden="true">🪔</div>
+      <div class="diya-right" id="diya-2" aria-hidden="true">🪔</div>
+    </div>
+    <div class="screen-inner">
+      <div class="rakhi-title reveal-text">
+        <span class="rakhi-emoji" aria-hidden="true">🎀</span>
+        <h2>Rakhi</h2>
+        <span class="rakhi-emoji" aria-hidden="true">🎀</span>
+      </div>
+      <div class="narrative-block">
+        <p class="narrative reveal-text">So this Rakhi...</p>
+        <p class="narrative reveal-text">I didn't want to give you something that would simply sit somewhere.</p>
+        <p class="narrative reveal-text italic">I wanted to give you a memory.</p>
+        <p class="narrative reveal-text">A small reminder...</p>
+        <p class="narrative reveal-text golden-text">of how much you both mean to me.</p>
+      </div>
+      <div class="rakhi-decoration reveal-text" aria-hidden="true">
+        <div class="rakhi-thread"></div>
+        <div class="rakhi-center" id="rakhi-lotus">🪷</div>
+        <div class="rakhi-thread"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 11: TWO SURPRISES ===== -->
+  <section id="screen-11" class="screen warm-screen surprise-screen">
+    <div class="screen-inner">
+      <p class="section-label reveal-text">Two messages. Two hearts.</p>
+      <h2 class="section-title reveal-text">For You Both.</h2>
+
+      <div class="surprise-cards">
+        <button class="surprise-card annaya-card reveal-text" onclick="openGiftCard('annaya')" aria-label="Open message for Annaya">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-icon" aria-hidden="true">💙</div>
+          <div class="card-title">FOR MY ANNAYA</div>
+          <div class="card-subtitle">Anudeep</div>
+          <div class="card-btn" aria-hidden="true">Open ↗</div>
+        </button>
+        <button class="surprise-card vadina-card reveal-text" onclick="openGiftCard('vadina')" aria-label="Open message for Vadina">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-icon" aria-hidden="true">❤️</div>
+          <div class="card-title">FOR MY VADINA</div>
+          <div class="card-subtitle">My Vadina</div>
+          <div class="card-btn" aria-hidden="true">Open ↗</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 12: FINAL LETTER ===== -->
+  <section id="screen-12" class="screen warm-screen letter-screen">
+    <div class="screen-inner">
+      <p class="narrative reveal-text italic">One last thing...</p>
+
+      <div class="envelope-container" id="envelope-container">
+        <button class="envelope" id="envelope" onclick="openEnvelope()" aria-label="Tap to open the letter">
+          <div class="envelope-flap" id="envelope-flap" aria-hidden="true"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart" aria-hidden="true">❤️</div>
+            <div class="envelope-hint">tap to open</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="letter-content hidden" id="letter-content" aria-live="polite">
+        <div class="letter-paper">
+          <div class="letter-header">
+            <span class="letter-to">Annaya &amp; Vadina...</span>
+          </div>
+          <div class="letter-body">
+            <p class="letter-line" style="--delay:0.5s">Thank you.</p>
+            <p class="letter-line" style="--delay:1.0s">For every call.</p>
+            <p class="letter-line" style="--delay:1.5s">For every word of courage.</p>
+            <p class="letter-line" style="--delay:2.0s">For every moment you stayed.</p>
+            <p class="letter-line" style="--delay:2.5s">For understanding me when I couldn't explain what I was feeling.</p>
+            <p class="letter-line" style="--delay:3.0s">I may never be able to repay that.</p>
+            <p class="letter-line" style="--delay:3.5s">But I hope you always know...</p>
+            <p class="letter-line golden-text" style="--delay:4.0s">I am forever grateful for you both.</p>
+            <p class="letter-line" style="--delay:4.5s">Kinnu will always have a place in my heart.</p>
+            <p class="letter-line" style="--delay:5.0s">And because of him...</p>
+            <p class="letter-line golden-text italic" style="--delay:5.5s">I found a brother and a sister I never knew I needed.</p>
+          </div>
+          <div class="letter-footer" style="--delay:6.0s">— Shrestha, with forever love ❤️</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL SCREEN ===== -->
+  <section id="screen-final" class="screen final-screen">
+    <div class="final-bg-glow" aria-hidden="true"></div>
+    <div class="golden-particles-final" id="golden-particles-final" aria-hidden="true"></div>
+    <div class="final-family-photo" aria-hidden="true">
+      <!-- Populated by JS from family/ folder -->
+      <img id="final-family-img" src="" alt="Our family — Shrestha, Kinnu, Annaya and Vadina" loading="lazy" decoding="async" onclick="openLightbox(this)" />
+      <div class="photo-vignette"></div>
+    </div>
+    <div class="final-content">
+      <h1 class="final-title reveal-text">Happy Rakhi</h1>
+      <p class="final-title-sub reveal-text">Annaya &amp; Vadina ❤️</p>
+      <p class="final-sub reveal-text">Forever grateful.</p>
+      <p class="final-sign reveal-text">— Shrestha</p>
+      <div class="final-quote reveal-text">
+        <p>Some people enter your life unexpectedly.</p>
+        <p>Some stay.</p>
+        <p>And some become family.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end story-container -->
+
+<!-- ===== GIFT CARD MODAL ===== -->
+<div id="gift-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Gift message">
+  <div class="modal-overlay" onclick="closeGiftCard()"></div>
+  <div class="modal-content" id="gift-modal-content">
+    <!-- filled dynamically -->
+  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Photo" />
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">✕</button>
+  </div>
+</div>
+
+<!-- ===== WAIT SCREEN (Easter egg) ===== -->
+<div id="wait-screen" class="wait-screen hidden" role="dialog">
+  <p class="wait-text">Wait...</p>
+  <p class="wait-sub">Before you go...</p>
+  <button onclick="closeWaitScreen()">I'm still here ❤️</button>
+</div>
+
+<!-- ===== SECRET STAR (Easter egg) ===== -->
+<div id="secret-star" role="button" tabindex="0" title="psst... there's a secret here ✨" aria-label="Secret message">✦</div>
+
+<!-- ===== SECRET MESSAGE (Easter egg) ===== -->
+<div id="secret-message" class="hidden" role="status">
+  <div class="secret-inner">
+    <button class="secret-close" onclick="closeSecret()" aria-label="Close secret message">✕</button>
+    <p class="secret-title">A little secret...</p>
+    <p class="secret-text">Every time I close my eyes and think of strength, I think of you both. You didn't just stay by my side. You showed me what family truly means.</p>
+    <p class="secret-emoji" aria-hidden="true">💙❤️</p>
+  </div>
+</div>
+
+<!-- Audio element -->
+<audio id="bg-music" loop preload="none">
+  <source src="assets/music/music.mp3" type="audio/mpeg" />
+</audio>
+
+<script src="js/photos-config.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/music.js"></script>
+<script src="js/photos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
